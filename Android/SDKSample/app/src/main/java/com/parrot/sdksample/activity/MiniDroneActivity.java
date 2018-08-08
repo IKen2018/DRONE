@@ -32,7 +32,7 @@ public class MiniDroneActivity extends AppCompatActivity {
 
     private TextView mBatteryLabel;
     private Button mTakeOffLandBt;
-    private Button mFlipBt;
+    private Button mRollBt;
 private Button mAutoBt;
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -152,22 +152,25 @@ private Button mAutoBt;
             }
         });
 
-        mFlipBt = (Button)findViewById(R.id.flipBt);
-        mFlipBt.setOnClickListener(new View.OnClickListener() {
+        mRollBt = (Button)findViewById(R.id.flipBt);
+        mRollBt.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 try {mMiniDrone.takeOff();
-                    mMiniDrone.setGaz((byte) 20);
+                    mMiniDrone.setGaz((byte) 50);
                     Thread.sleep(1000);
-                    mMiniDrone.setPitch((byte) 50);
+                    mMiniDrone.setGaz((byte) 20);
+                    Thread.sleep(500);
+                    mMiniDrone.setPitch((byte) -50);
                     mMiniDrone.setFlag((byte) 1);
                     Thread.sleep(2000);
                     mMiniDrone.setPitch((byte) 0);
                     mMiniDrone.setFlag((byte) 1);
                     Thread.sleep(500);
-                    mMiniDrone.setYaw((byte) -25);
+                    mMiniDrone.setRoll((byte) 50);
                     Thread.sleep(1000);
+                    mMiniDrone.setRoll((byte) -50);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -403,20 +406,19 @@ private Button mAutoBt;
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED:
                     mTakeOffLandBt.setText("Take off");
                     mTakeOffLandBt.setEnabled(true);
-                    mFlipBt.setEnabled(true);
+                    mRollBt.setEnabled(true);
                     break;
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING:
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING:
                     mTakeOffLandBt.setText("Land");
                     mTakeOffLandBt.setEnabled(true);
-                    mFlipBt.setEnabled(false);
+                    mRollBt.setEnabled(false);
                     break;
                 default:
                     mTakeOffLandBt.setEnabled(false);
-                    mFlipBt.setEnabled(false);
+                    mRollBt.setEnabled(false);
             }
         }
-
         @Override
         public void onPictureTaken(ARCOMMANDS_MINIDRONE_MEDIARECORDEVENT_PICTUREEVENTCHANGED_ERROR_ENUM error) {
             Log.i(TAG, "Picture has been taken");
