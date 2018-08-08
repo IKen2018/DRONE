@@ -32,7 +32,7 @@ public class MiniDroneActivity extends AppCompatActivity {
 
     private TextView mBatteryLabel;
     private Button mTakeOffLandBt;
-    private Button mDownloadBt;
+    private Button mFlipBt;
 private Button mAutoBt;
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -152,11 +152,27 @@ private Button mAutoBt;
             }
         });
 
-        mDownloadBt = (Button)findViewById(R.id.downloadBt);
-        mDownloadBt.setEnabled(false);
-        mDownloadBt.setOnClickListener(new View.OnClickListener() {
+        mFlipBt = (Button)findViewById(R.id.flipBt);
+        mFlipBt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
             public void onClick(View v) {
-                mMiniDrone.getLastFlightMedias();
+                try {mMiniDrone.takeOff();
+                    mMiniDrone.setGaz((byte) 20);
+                    Thread.sleep(1000);
+                    mMiniDrone.setPitch((byte) 50);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(2000);
+                    mMiniDrone.setPitch((byte) 0);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(500);
+                    mMiniDrone.setYaw((byte) -25);
+                    Thread.sleep(1000);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
 
 
             }
@@ -387,17 +403,17 @@ private Button mAutoBt;
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED:
                     mTakeOffLandBt.setText("Take off");
                     mTakeOffLandBt.setEnabled(true);
-                    mDownloadBt.setEnabled(true);
+                    mFlipBt.setEnabled(true);
                     break;
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING:
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING:
                     mTakeOffLandBt.setText("Land");
                     mTakeOffLandBt.setEnabled(true);
-                    mDownloadBt.setEnabled(false);
+                    mFlipBt.setEnabled(false);
                     break;
                 default:
                     mTakeOffLandBt.setEnabled(false);
-                    mDownloadBt.setEnabled(false);
+                    mFlipBt.setEnabled(false);
             }
         }
 
