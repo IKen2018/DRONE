@@ -118,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Roll"
-        android:id="@+id/RollBt"
+        android:id="@+id/rollBt"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:width="150dp"/>
@@ -128,7 +128,7 @@
         android:layout_height="wrap_content"
         android:text="Auto"
         android:id="@+id/autoBt"
-        android:layout_alignParentLeft="@+id/flipBt"
+        android:layout_alignParentLeft="@+id/RollBt"
         android:width="150dp"/>
     <TextView
         android:layout_width="wrap_content"

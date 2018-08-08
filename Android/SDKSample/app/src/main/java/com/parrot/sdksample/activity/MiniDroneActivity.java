@@ -134,16 +134,16 @@ private Button mAutoBt;
             @Override
             public void onClick(View v) {
                 try {mMiniDrone.takeOff();
-                    mMiniDrone.setGaz((byte) 20);
-                    Thread.sleep(1000);
-                    mMiniDrone.setPitch((byte) 50);
+                    mMiniDrone.setGaz((byte) 10);
+                    Thread.sleep(500);
+                    mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     mMiniDrone.setPitch((byte) 0);
                     mMiniDrone.setFlag((byte) 1);
                     Thread.sleep(500);
                     mMiniDrone.setYaw((byte) -25);
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -152,25 +152,26 @@ private Button mAutoBt;
             }
         });
 
-        mRollBt = (Button)findViewById(R.id.flipBt);
+        mRollBt = (Button)findViewById(R.id.rollBt);
         mRollBt.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 try {mMiniDrone.takeOff();
-                    mMiniDrone.setGaz((byte) 50);
-                    Thread.sleep(1000);
+                    mMiniDrone.setGaz((byte) 40);
+                    Thread.sleep(500);
                     mMiniDrone.setGaz((byte) 20);
                     Thread.sleep(500);
-                    mMiniDrone.setPitch((byte) -50);
+                    mMiniDrone.setPitch((byte) 50);
                     mMiniDrone.setFlag((byte) 1);
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     mMiniDrone.setPitch((byte) 0);
-                    mMiniDrone.setFlag((byte) 1);
+                    mMiniDrone.setFlag((byte) 0);
                     Thread.sleep(500);
                     mMiniDrone.setRoll((byte) 50);
                     Thread.sleep(1000);
                     mMiniDrone.setRoll((byte) -50);
+                    mMiniDrone.setRoll((byte) 0);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
