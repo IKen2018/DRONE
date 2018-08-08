@@ -33,7 +33,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private TextView mBatteryLabel;
     private Button mTakeOffLandBt;
     private Button mDownloadBt;
-
+private Button mAutoBt;
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
 
@@ -127,28 +127,42 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
+        mAutoBt = (Button)findViewById(R.id.autoBt);
+        mAutoBt.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                try {mMiniDrone.takeOff();
+                    mMiniDrone.setGaz((byte) 20);
+                    Thread.sleep(1000);
+                    mMiniDrone.setPitch((byte) 50);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(2000);
+                    mMiniDrone.setPitch((byte) 0);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(500);
+                    mMiniDrone.setYaw((byte) -25);
+                    Thread.sleep(1000);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         mDownloadBt = (Button)findViewById(R.id.downloadBt);
         mDownloadBt.setEnabled(false);
         mDownloadBt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mMiniDrone.getLastFlightMedias();
 
-                mDownloadProgressDialog = new ProgressDialog(MiniDroneActivity.this, R.style.AppCompatAlertDialogStyle);
-                mDownloadProgressDialog.setIndeterminate(true);
-                mDownloadProgressDialog.setMessage("Fetching medias");
-                mDownloadProgressDialog.setCancelable(false);
-                mDownloadProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mMiniDrone.cancelGetLastFlightMedias();
-                    }
-                });
-                mDownloadProgressDialog.show();
+
             }
         });
 
         findViewById(R.id.gazUpBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
