@@ -128,7 +128,7 @@
         android:layout_height="wrap_content"
         android:text="Auto"
         android:id="@+id/autoBt"
-        android:layout_alignParentLeft="@+id/RollBt"
+        android:layout_alignParentLeft="@+id/rollBt"
         android:width="150dp"/>
     <TextView
         android:layout_width="wrap_content"

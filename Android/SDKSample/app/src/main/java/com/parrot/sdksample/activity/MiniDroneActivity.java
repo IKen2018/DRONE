@@ -157,9 +157,16 @@ private Button mAutoBt;
 
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 try {mMiniDrone.takeOff();
                     mMiniDrone.setGaz((byte) 40);
                     Thread.sleep(500);
+=======
+                try {
+                    mMiniDrone.takeOff();
+                    mMiniDrone.setGaz((byte) 50);
+                    Thread.sleep(1000);
+>>>>>>> a21399deec9b01f4d781b83a5159e60aa5e68eec
                     mMiniDrone.setGaz((byte) 20);
                     Thread.sleep(500);
                     mMiniDrone.setPitch((byte) 50);
