@@ -34,6 +34,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mTakeOffLandBt;
     private Button mRollBt;
 private Button mAutoBt;
+    private Button mFlipBt;
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
 
@@ -157,16 +158,11 @@ private Button mAutoBt;
 
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                try {mMiniDrone.takeOff();
-                    mMiniDrone.setGaz((byte) 40);
-                    Thread.sleep(500);
-=======
+
                 try {
                     mMiniDrone.takeOff();
-                    mMiniDrone.setGaz((byte) 50);
+                    mMiniDrone.setGaz((byte) 40);
                     Thread.sleep(1000);
->>>>>>> a21399deec9b01f4d781b83a5159e60aa5e68eec
                     mMiniDrone.setGaz((byte) 20);
                     Thread.sleep(500);
                     mMiniDrone.setPitch((byte) 50);
@@ -188,6 +184,40 @@ private Button mAutoBt;
 
             }
         });
+
+        mFlipBt = (Button)findViewById(R.id.FlipBt);
+        mFlipBt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    mMiniDrone.setFlag((byte)0);
+                    mMiniDrone.takeOff();
+                    Thread.sleep(1000);
+                    mMiniDrone.setPitch((byte)30);
+                    mMiniDrone.setFlag((byte)1);
+                    Thread.sleep(2000);
+                    mMiniDrone.setPitch((byte)80);
+                    mMiniDrone.setFlag((byte)1);
+                    Thread.sleep(200);
+                    mMiniDrone.setPitch((byte)160);
+                    mMiniDrone.setFlag((byte)1);
+                    Thread.sleep(200);
+                    //mMiniDrone.emergency();
+                    Thread.sleep(10);
+                    mMiniDrone.setPitch((byte)0);
+                    mMiniDrone.setFlag((byte)0);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+        });
+
+
 
         findViewById(R.id.gazUpBt).setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {

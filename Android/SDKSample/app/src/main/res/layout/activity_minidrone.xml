@@ -207,4 +207,11 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:text="Button" />
+
+    <Button
+        android:id="@+id/FlipBt"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/takeOffOrLandBt"
+        android:text="Flip" />
 </RelativeLayout>
