@@ -22,8 +22,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take picture"
-        android:id="@+id/takePictureBt"
+        android:text="Spin Lw Fwd"
+        android:id="@+id/spinLowBt"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:width="150dp"/>
@@ -207,4 +207,5 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:text="Button" />
+
 </RelativeLayout>

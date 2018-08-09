@@ -33,7 +33,8 @@ public class MiniDroneActivity extends AppCompatActivity {
     private TextView mBatteryLabel;
     private Button mTakeOffLandBt;
     private Button mRollBt;
-private Button mAutoBt;
+    private Button mSpinLowBt;
+    private Button mAutoBt;
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
 
@@ -157,16 +158,9 @@ private Button mAutoBt;
 
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
                 try {mMiniDrone.takeOff();
                     mMiniDrone.setGaz((byte) 40);
                     Thread.sleep(500);
-=======
-                try {
-                    mMiniDrone.takeOff();
-                    mMiniDrone.setGaz((byte) 50);
-                    Thread.sleep(1000);
->>>>>>> a21399deec9b01f4d781b83a5159e60aa5e68eec
                     mMiniDrone.setGaz((byte) 20);
                     Thread.sleep(500);
                     mMiniDrone.setPitch((byte) 50);
@@ -355,7 +349,35 @@ private Button mAutoBt;
             }
         });
 
-        findViewById(R.id.rollRightBt).setOnTouchListener(new View.OnTouchListener() {
+
+        mSpinLowBt = (Button)findViewById(R.id.spinLowBt);
+        mSpinLowBt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    mMiniDrone.takeOff();
+                    mMiniDrone.setFlag((byte)1);
+                    mMiniDrone.setPitch((byte) 45);
+                    Thread.sleep(1000);
+                    mMiniDrone.setGaz((byte)(-10);
+                    int sign = 1;
+                    int pitchholder = 0;
+                    int rate = 2;
+                    while (true) {
+                        mMiniDrone.setPitch((byte)pitchholder);
+                    }
+                    pitchholder = sign * (pitchholder + sign + rate);
+                    if(pitchholder >= 100);
+                    sign = -sign;
+                    else if(pitchholder <= -100)
+                        sign = -sign;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+                findViewById(R.id.rollRightBt).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
