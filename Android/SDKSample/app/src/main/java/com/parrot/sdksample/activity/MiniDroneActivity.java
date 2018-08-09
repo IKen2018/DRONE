@@ -136,10 +136,10 @@ public class MiniDroneActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     mMiniDrone.takeOff();
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                     mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                     mMiniDrone.setPitch((byte) 0);
                     mMiniDrone.setFlag((byte) 0);
                     Thread.sleep(500);
@@ -360,7 +360,7 @@ public class MiniDroneActivity extends AppCompatActivity {
                             mMiniDrone.setFlag((byte) 1);
                             mMiniDrone.setPitch((byte) 45);
                             Thread.sleep(1000);
-                            mMiniDrone.setGaz((byte) (-10);
+                            mMiniDrone.setGaz((byte) (-10));
                             int sign = 1;
                             int pitchholder = 0;
                             int rate = 2;
@@ -387,6 +387,7 @@ public class MiniDroneActivity extends AppCompatActivity {
                                 mMiniDrone.setFlag((byte) 1);
                                 break;
                         }
+                        return false;
                     }
                 });
                 findViewById(R.id.forwardBt).setOnTouchListener(new View.OnTouchListener() {
