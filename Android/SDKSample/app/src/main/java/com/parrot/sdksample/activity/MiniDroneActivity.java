@@ -137,7 +137,8 @@ public class MiniDroneActivity extends AppCompatActivity {
                     mMiniDrone.setPitch((byte) 0);
                     mMiniDrone.setFlag((byte) 0);
                     Thread.sleep(500);
-                    mMiniDrone.setYaw((byte) -25);
+                    mMiniDrone.setYaw((byte) 25);
+                    Thread.sleep(4000);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -158,13 +159,17 @@ public class MiniDroneActivity extends AppCompatActivity {
                     Thread.sleep(500);
                     mMiniDrone.setGaz((byte) 20);
                     Thread.sleep(500);
-                    mMiniDrone.setGaz((byte) 0);
                     mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
-                    Thread.sleep(500);
-                    mMiniDrone.setPitch((byte) 0);
-                    mMiniDrone.setFlag((byte) 0);
-                    Thread.sleep(500);
+                    Thread.sleep(2000);
+                    mMiniDrone.setRoll((byte) 50);
+                    Thread.sleep(1000);
+                    mMiniDrone.setRoll((byte) 0);
+                    Thread.sleep(1000);
+                    mMiniDrone.setRoll((byte) 50);
+                    Thread.sleep(1000);
+                    mMiniDrone.setRoll((byte) 0);
+                    Thread.sleep(1000);
                     mMiniDrone.setRoll((byte) 50);
                     Thread.sleep(1000);
                     mMiniDrone.setRoll((byte) 0);
@@ -352,6 +357,7 @@ public class MiniDroneActivity extends AppCompatActivity {
                         try {
                             int count = 0;
                             mMiniDrone.takeOff();
+                            Thread.sleep(6000);
                             mMiniDrone.setFlag((byte) 1);
                             mMiniDrone.setPitch((byte) 45);
                             Thread.sleep(1000);
