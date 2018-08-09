@@ -122,12 +122,6 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.takePictureBt).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mMiniDrone.takePicture();
-            }
-        });
-
         mAutoBt = (Button) findViewById(R.id.autoBt);
         mAutoBt.setOnClickListener(new View.OnClickListener() {
 
@@ -518,9 +512,7 @@ public class MiniDroneActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBatteryChargeChanged(int batteryPercentage) {
-            mBatteryLabel.setText(String.format("%d%%", batteryPercentage));
-        }
+        public void onBatteryChargeChanged(int batteryPercentage) {}
 
         @Override
         public void onPilotingStateChanged(ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_ENUM state) {
