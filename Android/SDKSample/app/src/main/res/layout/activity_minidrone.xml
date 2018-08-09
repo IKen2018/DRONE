@@ -20,14 +20,12 @@
         android:width="150dp"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Spin Lw Fwd"
         android:id="@+id/spinLowBt"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:width="150dp"/>
-
+        android:text="Spin Lw Fwd"
+        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_toRightOf="@id/HitTheDeck"
+        android:layout_toLeftOf="@id/takeOffOrLandBt"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

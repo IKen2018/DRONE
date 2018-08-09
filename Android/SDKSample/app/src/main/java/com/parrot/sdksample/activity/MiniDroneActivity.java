@@ -374,7 +374,7 @@ public class MiniDroneActivity extends AppCompatActivity {
                                 else if (pitchholder <= -100)
                                     sign = -sign;
                             }
-                            
+
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
