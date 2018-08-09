@@ -356,6 +356,7 @@ public class MiniDroneActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try {
+                            int count = 0;
                             mMiniDrone.takeOff();
                             mMiniDrone.setFlag((byte) 1);
                             mMiniDrone.setPitch((byte) 45);
@@ -364,14 +365,16 @@ public class MiniDroneActivity extends AppCompatActivity {
                             int sign = 1;
                             int pitchholder = 0;
                             int rate = 2;
-                            while (true) {
+                            while (count < 200000) {
                                 mMiniDrone.setPitch((byte) pitchholder);
+                                count++;
+                                pitchholder = sign * (pitchholder + sign + rate);
+                                if (pitchholder >= 100)
+                                    sign = -sign;
+                                else if (pitchholder <= -100)
+                                    sign = -sign;
                             }
-                            pitchholder = sign * (pitchholder + sign + rate);
-                            if (pitchholder >= 100)
-                                sign = -sign;
-                            else if (pitchholder <= -100)
-                                sign = -sign;
+                            
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
