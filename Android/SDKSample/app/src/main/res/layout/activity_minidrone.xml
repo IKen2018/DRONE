@@ -220,13 +220,11 @@
         android:layout_centerVertical="true"
         android:text="Button" />
 
-<<<<<<< HEAD
-=======
+
     <Button
         android:id="@+id/FlipBt"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/takeOffOrLandBt"
         android:text="Flip" />
->>>>>>> 70b19dd3b2b4686c8b2434e82323f3dd0dbe7ca1
 </RelativeLayout>
