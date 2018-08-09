@@ -413,7 +413,6 @@ public class MiniDroneActivity extends AppCompatActivity {
                         return true;
                     }
                 });
->>>>>>>70 b19dd3b2b4686c8b2434e82323f3dd0dbe7ca1
 
                 findViewById(R.id.backBt).setOnTouchListener(new View.OnTouchListener() {
                     @Override
